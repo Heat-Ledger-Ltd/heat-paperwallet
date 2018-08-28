@@ -9,7 +9,7 @@ other future supported blockchain protocol in HEAT WALLET.
 
 Installation is super simple.
 
-<a href="https://raw.githubusercontent.com/Heat-Ledger-Ltd/heat-paperwallet/master/dist/index.html" download>Save this file to your computer</a>
+<a href="https://raw.githubusercontent.com/Heat-Ledger-Ltd/heat-paperwallet/master/dist/heat-paperwallet.html" download>Save this file to your computer</a>
 
   1. Download and save above file to somewhere on your computer (to download right click the link and choose SAVE)
   2. Locate the downloaded file 
