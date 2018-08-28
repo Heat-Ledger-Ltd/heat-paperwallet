@@ -23,9 +23,3 @@ Usage is super simple. Automatically a paper wallet will be generated which is s
 to do is print the page and your are done.
 
 Want a second or third paper wallet? Thats simple too, just reload the page to get a new paper wallet.
-
-## Why do I have to download the file?
-
-Good question! Since why not simply open the file from the network.
-
-The reason for this is to increase security, files loaded from your computer are 
