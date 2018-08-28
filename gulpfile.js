@@ -27,8 +27,10 @@ var gulp = require('gulp');
 gulp.task('usemin', function() {
   var usemin = require('gulp-usemin');
   // var uglify = require('gulp-uglify');
+  var rename = require("gulp-rename");
   var minifyCss = require('gulp-minify-css');
   return gulp.src('app/index.html')
+    .pipe(rename("heat-paperwallet.html"))
     .pipe(usemin({
       inlinejs: [ 'concat' ],
       inlinecss: [ minifyCss(), 'concat' ]
