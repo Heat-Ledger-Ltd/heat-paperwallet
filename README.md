@@ -5,6 +5,12 @@ Generate the most SECURE HEAT COLD WALLETS.
 Print and store away your secret MULTI BLOCKCHAIN HEAT seed storing safely your HEAT, ETHEREUM, BITCOIN and any
 other future supported blockchain protocol in HEAT WALLET.
 
+## Sample
+
+This is a sample paper wallet.
+
+![Sample](https://raw.githubusercontent.com/Heat-Ledger-Ltd/heat-paperwallet/master/app/paperwallet-sample.png)
+
 ## Installation
 
 Installation is super simple.
