@@ -20,30 +20,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * */
+var sdk = new heatsdk.HeatSDK()
 function DOMContentLoaded() {
-  $('#account-name').text('HEAT Paper Wallet')
-  var sdk = new heatsdk.HeatSDK()
+  $('#account-name').text('HEAT Paper Wallet')  
   sdk.secretGenerator.generate().then(function (secret) {
-    var publickey = sdk.crypto.secretPhraseToPublicKey(secret)
-    var address = sdk.crypto.getAccountIdFromPublicKey(publickey)
-    $('#secret').text(secret)
-    $('#address').text(address)
-    $('#address-nav-bar').text(address)    
-    $('#publicKey').text(publickey)
-
-    var width = 210
-    var qrcodeDefaults = {
-      width: width,
-      height: width,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    }
-
-    new QRCode($('#secret-qrcode')[0], Object.assign({ text: secret }, qrcodeDefaults))
-    new QRCode($('#address-qrcode')[0], Object.assign({ text: address }, qrcodeDefaults))
-    //new QRCode($('#publicKey-qrcode')[0], Object.assign({ text: publickey }, qrcodeDefaults))
+    setSecretPhrase(secret)
   })
+  $('#btn-apply-custom-secret').click(function () {
+    setSecretPhrase($('#custom-secret').val())
+  })
+}
+
+function setSecretPhrase(secret) {
+  var publickey = sdk.crypto.secretPhraseToPublicKey(secret)
+  var address = sdk.crypto.getAccountIdFromPublicKey(publickey)
+  $('#secret').text(secret)
+  $('#address').text(address)
+  $('#address-nav-bar').text(address)    
+  $('#publicKey').text(publickey)
+
+  var width = 210
+  var qrcodeDefaults = {
+    width: width,
+    height: width,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  }
+
+  $('#secret-qrcode').empty()
+  $('#address-qrcode').empty()
+
+  new QRCode($('#secret-qrcode')[0], Object.assign({ text: secret }, qrcodeDefaults))
+  new QRCode($('#address-qrcode')[0], Object.assign({ text: address }, qrcodeDefaults))
+  //new QRCode($('#publicKey-qrcode')[0], Object.assign({ text: publickey }, qrcodeDefaults))
 }
 
 document.addEventListener("DOMContentLoaded", DOMContentLoaded)

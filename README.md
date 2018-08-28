@@ -23,3 +23,10 @@ Usage is super simple. Automatically a paper wallet will be generated which is s
 to do is print the page and your are done.
 
 Want a second or third paper wallet? Thats simple too, just reload the page to get a new paper wallet.
+
+## Create paper wallet for your existing keys
+
+If you have an existing HEAT secret key you can enter that in the paper wallet and it will generate a paper wallet 
+for that key as well.
+
+Look for the button that says "Use existing key instead".
