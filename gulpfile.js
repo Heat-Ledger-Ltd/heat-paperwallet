@@ -26,9 +26,8 @@ var gulp = require('gulp');
 
 gulp.task('usemin', function() {
   var usemin = require('gulp-usemin');
-  var uglify = require('gulp-uglify');
+  // var uglify = require('gulp-uglify');
   var minifyCss = require('gulp-minify-css');
-  gulp.src(['app/assets/**/*.*']).pipe(gulp.dest('dist/assets'))
   return gulp.src('app/index.html')
     .pipe(usemin({
       inlinejs: [ 'concat' ],
