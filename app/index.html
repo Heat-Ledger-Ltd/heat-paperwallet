@@ -42,22 +42,47 @@
 <body>
   <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
-      <img src="assets/logo-small.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      <b>&nbsp;HEAT Paper Wallet</b>
+      <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAArCAYAAAD7YZFOAAAAAXNSR0IArs4c6QAABrVJREFUWAnFWL1vHUUQ/+3u3Xt2BCbYggQ7kEAiIxSFJjQIKUI0FCgSdAiRggYERWSlCCkpEAUVAvEHIAoEifgIRUqQKEgkUoAw4iMBAkgpSMiXEzt+vlt+s/vuvbvbXfNiBxjrfPsxO/Ob2ZnZvaewDrL341aUOE4R9/IpWqKyQuGZ7Ed81BofuZuNzBlhvHwV+cS42giNcdgWgwJMYTe0Rm+oq2+Iu8WsuxDjsgDYkK87bN54a12eMwa5A5fSq9BJTY0yvi7Pjff6nktoKvEfgPuA4RPVb5Ax1NIGls6zwdL+Gkbl6pTcVruVGZjjaWj1GKydx0+YC0QVyJRGWolBPOa243Fr1KGScnWJw+o0PgtkcyAAR6sMZnHQQs1R8Z1uUYGLscX0mcRc0nNUHI05lpiO0dhDu/bQtBfsrD2KHubULzhT19MQ7IHpN6HUa0oRGINGMpGvs/VFg7Zy4OJbTqZSx8Exkc6xKpZOvhin1ZPI1TG7A9sHstlogMMO7Ie2L7nSQFCOuGla4Xy/13j1CuRka8qocaQ8tyw7oeirisQJCg9Q0Tt2G8aq4YFgot4Cow4GNUtAFnFw9G5HsFfCIu9ozHGvL1HPYoNf9Cg8wqDaV40PBBP8Xg5uDsBxkOfSuWpB/Z1pF7MDGfU51/bbHgxjGVc5eIVgQtLqWeJ0MwPBWmN3yMkRchqFC9G5lPI+Mw2OJgRjbYkslwKZ3nuzC9txh8wNwBHsfQGzDFg6TiWyVdFzMev7gig8uq34g74Tz0WI+Ca7GtMy5cDZLTy4gZkIL6wE7koCnOU6AZd6wFtLhMheWGVDz4koxjET6S5Z5urc4himiG4qiDdKURK4nbiV3J5v6Nr9BCf51qTSGf5zc3DYo4cuiU0xMh1sk3EHjmfQJoqaCBhltcV1qpZtCEidxikOvhVMjDDAGL/m4LfNEp0ltooIBy7PuKVZ/xyUoKzIMy4R2rAmVXPrfWvuhpRv0VEnCbQVHp0kf3yNcY89kDqbX6hxmZZcb07chF7O2ik62+Ckn6sp2TIPTmHStWIuLgju138BnJw6oj2uc9LuRMeDy7jHCRdb2Iv0dH2zb4LbmK45zvHwj3tOcSevYcKDM2pbChxTO3o6CMLfH8b4lgLp74QCK+pkpNhyrc1Z2MXkamsr86WvsRG3YVPGM1W+BGZc5riqx8mKpF/ir6rbfk8rPIeuOkQllWjvY69QWYuv7aP2KfU5Q7xFmWHttG7cO6g5P7ZiMJ2xum20Bpt4dws3T7a6SHuO5eB25vjdQdyIIspTBQ3705ktI00yjGXLOiCnzNA0z8O1WQ8P6t4GbFY5a5wAiTxllvYcxarBGjGu/RjCvifIRw+gy+3OWOBFp/iurTvHnoxX2RlONM/AWixoS9tTlHGlCK5/TtfWOq8sJsAtYIHReoUGhSeT6FPYlRUdzPBm6lNaYqWiSgkSNxLhk09DWTvk9aulL+O8jFKJtEKacKfOReftejmpZBWYzAhsyX1D1RmGopbpmegB7VgyetyItAhxi61WObNdNjukYzx1nrBXHfS6U/qcvHCUWW8M87xr98iUNwJTFjBgr5vEoS9Ccn7zG1rlspP/mJ4D8utzFoWo5zhdspwsBZ4TAWKOxXGdG3xL4V9Fg1JjpbviLoYDnfUGk6XjVIt6BuegLX0/lvHOG/ecCDIstbFk4DVNlXhVq8Mund9wwkLG5QW96tHlY64C03orSZcFJ1mgBMSvs/OBXklNjaP4BF96q3bhSFnibXeprn79EKAZrtyS0boEaV12nOWe15eEepvgruUMlwRp+UQUfkEhb18zfmDrgASJA6de4SfmPA6wKr3uXC1Mcvs3WPgOLqvYCcm6hOB4y2ODPkvNBv9LVLhYRgxrqEAXffK2+IL/93I3f+Pb4ZU31DxBzONluw8fsgS8SNgPMWO+33k4fZdTFTgnofVPEoJfZ7xrxT9yOF0YnGGyy4X1VNHD++YC3lPHhmEkzmyQehcnOHDC7uatig/btRRssIpynxCtYdcVcLyq8wgLdFTsZhFHzi7h2+lP46GTXMjbRA/yrEYdgq9LEEAVSdtCdxK/NAmbS8ZVwqYuuhI7+luyUeItRn1wPTFgjbRmcNxrzbjsMO6aVPMea7LO/+HDu7m42fOlpDk2Uu/k8/SZbGqVqQJS2iKxP0bgAq0NfyT5wrTmhbu79Fx18KfVaSZFMlvTy/zMmsHRLO18l4o5ke/j7n8AZ1gmsv621uKs4Q0Zl2vTGmntnuPvkfyTXwIW+a5fN+tQxL8p6HW+aPtvZvOEx8ETltMAAAAASUVORK5CYII="
+        width="30" height="30" class="d-inline-block align-top" alt=""> -->
+      <b>&nbsp;<span id="account-name"></span></b>
     </a>
+    <ul class="nav navbar-nav" style="float: right">
+      <li><b><span id="address-nav-bar"></span></b></li>
+    </ul>
   </nav>
-  <div class="container-fluid">
+  <div class="container-fluid" id="qrcontainer">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12 dont-print">
+        <div class="alert alert-info" role="alert">
+        This is your HEAT paper wallet meant for printing out and safe keeping.<br>To generate a new paper wallet refresh this page.
+        </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-md-2 vertical-text">
-        <p>HEAT Paper Wallet</p>
-        <p>heatwallet.com</p>
+      <div class="col-4">
+        <h4>Your Address:</h4>
+        <div id="address-qrcode"></div>
       </div>
-      <div class="col-md-10">
-        main
+      <div class="col-4">
+        <h4>Your Private Key:</h4>
+        <div id="secret-qrcode"></div>
+      </div>
+      <div class="col-4">
+        <h4>Notes:</h4>
+        <p contenteditable="true">Enter a description here.</p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <h2>Your Address:</h2>
+        <div id="address"></div>
+        <h2>Your Private Key:</h2>
+        <div id="secret"></div>
+        <h2>Your Public Key:</h2>
+        <div id="publicKey"></div>
+        <h1>heatwallet.com</h1>
       </div>
     </div>
   </div>
