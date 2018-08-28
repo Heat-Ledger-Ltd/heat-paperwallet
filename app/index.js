@@ -21,11 +21,29 @@
  * SOFTWARE.
  * */
 function DOMContentLoaded() {
+  $('#account-name').text('HEAT Paper Wallet')
   var sdk = new heatsdk.HeatSDK()
   sdk.secretGenerator.generate().then(function (secret) {
-    console.log(secret)
-  })  
-}
+    var publickey = sdk.crypto.secretPhraseToPublicKey(secret)
+    var address = sdk.crypto.getAccountIdFromPublicKey(publickey)
+    $('#secret').text(secret)
+    $('#address').text(address)
+    $('#address-nav-bar').text(address)    
+    $('#publicKey').text(publickey)
 
+    var width = 210
+    var qrcodeDefaults = {
+      width: width,
+      height: width,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    }
+
+    new QRCode($('#secret-qrcode')[0], Object.assign({ text: secret }, qrcodeDefaults))
+    new QRCode($('#address-qrcode')[0], Object.assign({ text: address }, qrcodeDefaults))
+    //new QRCode($('#publicKey-qrcode')[0], Object.assign({ text: publickey }, qrcodeDefaults))
+  })
+}
 
 document.addEventListener("DOMContentLoaded", DOMContentLoaded)
