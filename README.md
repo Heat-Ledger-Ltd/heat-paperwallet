@@ -9,10 +9,13 @@ other future supported blockchain protocol in HEAT WALLET.
 
 Installation is super simple.
 
-  1. Download and save this file to somewhere on your computer
+<a href="https://raw.githubusercontent.com/Heat-Ledger-Ltd/heat-paperwallet/master/dist/index.html" download>Save this file to your computer</a>
+
+  1. Download and save above file to somewhere on your computer (to download right click the link and choose SAVE)
   2. Locate the downloaded file 
   3. Drag it to an open browser window
-  4. Done
+  4. Print the page that displays your paper wallet
+  5. Done
 
 ## Usage
 
@@ -20,3 +23,9 @@ Usage is super simple. Automatically a paper wallet will be generated which is s
 to do is print the page and your are done.
 
 Want a second or third paper wallet? Thats simple too, just reload the page to get a new paper wallet.
+
+## Why do I have to download the file?
+
+Good question! Since why not simply open the file from the network.
+
+The reason for this is to increase security, files loaded from your computer are 
