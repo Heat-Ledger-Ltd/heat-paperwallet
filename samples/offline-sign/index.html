@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- Please note that we use https://getmdl.io/components for quick and easy page 
+         styling and for our client components. Look on their website to see how to use
+         Material Design Lite -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+  <style>
+  body {
+	  padding: 10px;
+	}
+	.demo-card-wide.mdl-card {
+	  width: 512px;
+	}
+	.demo-card-wide > .mdl-card__title {
+	  color: #fff;
+	  height: 176px;
+	  background: url('https://youpri.nl/wp-content/uploads/2017/09/FB-97506335-kittens-op-een-rij.jpg') center / cover;
+	}
+	.demo-card-wide > .mdl-card__menu {
+	  color: #fff;
+	}
+	.bigger {
+	  font-size: 16px;
+	  margin-bottom: 8px;
+	}
+	/* 
+	body {
+	  font-family: Menlo, Monaco, "Courier New", monospace;
+	  font-weight: normal;
+	  font-size: 14px;
+	  line-height: 16px;
+	  letter-spacing: 0;
+	  background-color: #24282A;
+	  color: #d4d4d4;
+	  text-align: left;
+	  border-top: 1px solid #121516;
+	  padding-top: 10px;
+	  padding-bottom: 10px;
+	  margin: 0;
+	} */
+	.json-pretty {
+	  padding-left: 30px;
+	  padding-right: 30px;
+	}
+	.json-selected {
+	  background-color: rgba(139, 191, 228, 0.19999999999999996);
+	}
+	
+	.json-string {
+	  color: #6caedd;
+	}
+	
+	.json-key {
+	  color: #ec5f67;
+	}
+	
+	.json-boolean {
+	  color: #99c794;
+	}
+	
+	.json-number {
+	  color: #99c794;
+	}
+  </style>
+
+  <!-- Please note how we hardcode the use of heat-sdk version, 0.3.3 in this case -->
+
+  <script src="https://unpkg.com/heat-sdk@2.1.0/dist/heat-sdk.umd.min.js"></script>
+  <script src="https://unpkg.com/json-pretty-html@1.1.2/dist/bundle.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      var sdk = new heatsdk.HeatSDK()
+
+      function generateTxn() {
+        var secret = $('#secrettxt').val()
+        var amount = $('#amount').val()
+        var address = $('#address').val()
+
+        var recipientOrRecipientPublicKey = "1"
+        var builder = new heatsdk.Builder()
+            .attachment(heatsdk.attachment.ORDINARY_PAYMENT)
+            .amountHQT(sdk.utils.convertToQNT(amount))
+            .feeHQT("0")
+        var transaction = new heatsdk.Transaction(sdk, address, builder)
+        transaction.sign(secret).then(t => {
+          $('#hex').val(t.getTransaction().getBytesAsHex())
+        })
+      }
+
+      function validateTxn() {
+        var bytes = $('#hex').val()
+        sdk.api.post('/tx/parse', { transactionBytes: bytes }).then(data => {
+          $('#json').html(prettyPrint.default(data))
+        })
+      }
+      
+      async function generateAddresses(count) {
+    	  sdk.secretGenerator().generate()
+    	  
+      }
+
+      $("#buildbtn").click(generateTxn)
+      $('#checkbtn').click(validateTxn)
+    })
+  </script>
+</head>
+
+<body>
+  <code id="dump"></code>
+  <h3>Send money - Send asset</h3>
+
+  <h6>Build and sign transactions for the HEAT blockchain</h6>
+
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">HEAT-SDK</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <div>
+        <span class="mdl-chip mdl-chip--contact">
+          <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">!</span>
+          <span class="mdl-chip__text">Transactions are NOT broadcasted!</span>
+        </span>
+      </div>
+      <div>
+        <form action="#">
+          <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows="2" id="secrettxt"></textarea>
+            <label class="mdl-textfield__label" for="secrettxt">Enter your secret phrase</label>
+          </div>
+        </form>
+      </div>
+      <div>
+        <form action="#">
+          <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows="2" id="amount"></textarea>
+            <label class="mdl-textfield__label" for="amount">Enter amount of HEAT</label>
+          </div>
+        </form>
+      </div>
+      <div>
+        <form action="#">
+          <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows="2" id="address"></textarea>
+            <label class="mdl-textfield__label" for="address">Enter recipient addresss</label>
+          </div>
+        </form>
+      </div>              
+      <div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="buildbtn">
+          Build & Sign transaction
+        </button>
+      </div>
+      <div>
+        <form action="#">
+          <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows="2" id="hex"></textarea>
+            <label class="mdl-textfield__label" for="hex">Transaction bytes</label>
+          </div>
+        </form>
+      </div>
+      <div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="checkbtn">
+          Validate Transaction with API Server
+        </button>
+      </div>
+      <div>
+        <div id="json"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
