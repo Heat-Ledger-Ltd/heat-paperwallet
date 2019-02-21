@@ -72,6 +72,7 @@
 
   <!-- Please note how we hardcode the use of heat-sdk version, 0.3.3 in this case -->
 
+  <script src="./qrcode.min.js"></script>  
   <script src="https://unpkg.com/heat-sdk@2.1.0/dist/heat-sdk.umd.min.js"></script>
   <script src="https://unpkg.com/json-pretty-html@1.1.2/dist/bundle.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -94,6 +95,30 @@
         transaction.sign(secret).then(t => {
           $('#hex').val(t.getTransaction().getBytesAsHex())
         })
+
+        var width = 210
+      var qrcodeDefaults = {
+        width: width,
+        height: width,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.L
+      }
+
+      $('#qrcode').empty()
+
+      let text = JSON.stringify([
+        'heat','send',
+        [
+          '0',
+          address,
+          sdk.utils.convertToQNT(amount),          
+          'https://acme-webshop.com/confirm?param1=1&param2=2&param3=3'
+        ]
+      ])
+      let url = 'heat://action?p='+encodeURIComponent(text)
+      new QRCode($('#qrcode')[0], Object.assign({ text: url }, qrcodeDefaults))    
+
       }
 
       function validateTxn() {
@@ -176,6 +201,20 @@
       <div>
         <div id="json"></div>
       </div>
+      <div>
+        <br><br>
+        <div id="qrcode"></div>
+          <h4>Scan code with Wallet app to pay</h4>
+          <p>Download Wallet app below</p>
+        <p>
+          <img src="app-store.svg" style="width: 140px"/>
+        </p>
+        <p>
+          <img src="play-store.png" style="width: 140px"/>
+        </p>
+
+      </div>
+    
     </div>
   </div>
 
